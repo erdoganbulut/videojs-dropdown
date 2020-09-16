@@ -1,26 +1,26 @@
 import videojs from 'video.js';
 
-class QualitySelector {
+class Dropdown {
   constructor(player) {
     this.player = player;
     this.sources = [];
     this.callback = undefined;
     this.containerDropdownElement = undefined;
     this.defaults = {};
-    this.changeQualityName = true;
+    this.changeDropdownItemName = true;
   }
 
 	/**
-	 * event on selected the quality
+	 * event on selected the item
 	 */
-  onQualitySelect(quality) {
+  onDropdownItemSelect(item) {
     if (this.callback) {
-      this.callback(quality);
+      this.callback(item);
     }
 
     if (this.sources) {
-      // tries to find the source with this quality
-      let source = this.sources.find(ss => ss.format === quality.code);
+      // tries to find the source with this item
+      let source = this.sources.find(ss => ss.format === item.code);
 
       if (source) {
         this.player.src({ src: source.src, type: source.type });
@@ -31,7 +31,7 @@ class QualitySelector {
           this.player.play();
 
           Array.from(this.containerDropdownElement.firstChild.childNodes).forEach(ele => {
-            if (ele.dataset.code === quality.code) {
+            if (ele.dataset.code === item.code) {
               ele.setAttribute('class', 'current');
             } else {
               ele.removeAttribute('class');
@@ -41,10 +41,10 @@ class QualitySelector {
       }
 
       const player = document.getElementById(this.player.id_);
-      const qualitySelector = player.getElementsByClassName('vjs-brand-quality-link');
+      const dropdown = player.getElementsByClassName('vjs-brand-dropdown-link');
 
-      if (this.changeQualityName && qualitySelector && qualitySelector.length > 0) {
-        qualitySelector[0].innerText = quality.name;
+      if (this.changeDropdownItemName && dropdown && dropdown.length > 0) {
+        dropdown[0].innerText = item.name;
       }
     }
 
@@ -77,17 +77,17 @@ class QualitySelector {
 	 */
   onPlayerReady(options) {
     this.containerDropdownElement = document.createElement('div');
-    this.containerDropdownElement.className = 'vjs-quality-dropdown';
+    this.containerDropdownElement.className = 'vjs-dropdown-dropdown';
 
     let containerElement = document.createElement('div');
 
-    containerElement.className = 'vjs-quality-container';
+    containerElement.className = 'vjs-dropdown-container';
 
     let buttonElement = document.createElement('button');
 
-    buttonElement.className = 'vjs-brand-quality-link';
+    buttonElement.className = 'vjs-brand-dropdown-link';
     buttonElement.onclick = (event) => this.onToggleDropdown(event);
-    buttonElement.innerText = options.text || 'Quality';
+    buttonElement.innerText = options.text || 'Dil / Lang';
 
     let ulElement = document.createElement('ul');
 
@@ -103,8 +103,8 @@ class QualitySelector {
       this.sources = options.sources;
     }
 
-    if (options.hasOwnProperty('changeQualityName')) {
-      this.changeQualityName = options.changeQualityName;
+    if (options.hasOwnProperty('changeDropdownItemName')) {
+      this.changeDropdownItemName = options.changeDropdownItemName;
     }
 
     options.formats.map((format) => {
@@ -118,7 +118,7 @@ class QualitySelector {
       linkElement.setAttribute('href', '#');
       linkElement.addEventListener('click', (event) => {
         event.preventDefault();
-        this.onQualitySelect(format);
+        this.onDropdownItemSelect(format);
       });
 
       liElement.appendChild(linkElement);
@@ -133,7 +133,7 @@ class QualitySelector {
 
     this.player.controlBar.el().insertBefore(containerElement, fullScreenToggle);
 
-    this.player.addClass('vjs-qualityselector');
+    this.player.addClass('vjs-dropdown');
   }
 }
 
@@ -145,24 +145,24 @@ class QualitySelector {
  * depending on how the plugin is invoked. This may or may not be important
  * to you; if not, remove the wait for 'ready'!
  *
- * @function qualityselector
+ * @function dropdown
  * @param    {Object} [options={}]
  *           An object of options left to the plugin author to define.
  */
-const qualityselector = function(options) {
+const dropdown = function(options) {
   this.ready(() => {
-    let qualityControl = new QualitySelector(this);
+    let dropdownControl = new Dropdown(this);
 
-    qualityControl.onPlayerReady(videojs.mergeOptions(qualityControl.defaults, options));
+    dropdownControl.onPlayerReady(videojs.mergeOptions(dropdownControl.defaults, options));
   });
 };
 
 // Register the plugin with video.js.
 const registerPlugin = videojs.registerPlugin || videojs.plugin;
 
-registerPlugin('qualityselector', qualityselector);
+registerPlugin('dropdown', dropdown);
 
 // Include the version number.
-qualityselector.VERSION = '__VERSION__';
+dropdown.VERSION = '__VERSION__';
 
-export default qualityselector;
+export default dropdown;

@@ -1,4 +1,4 @@
-# videojs-qualityselector
+# videojs-dropdown
 
 Simple plugin that displays a dropdown with a list of possible videos based on its resolution, also changes the source when the user selects a desired option
 
@@ -7,12 +7,12 @@ Simple plugin that displays a dropdown with a list of possible videos based on i
 ## Installation
 
 ```sh
-npm install --save videojs-qualityselector
+npm install --save videojs-dropdown
 ```
 
 ## Usage
 
-To include videojs-qualityselector on your website or web application, use any of the following methods.
+To include videojs-dropdown on your website or web application, use any of the following methods.
 
 ### `<script>` Tag
 
@@ -20,11 +20,11 @@ This is the simplest case. Get the script in whatever way you prefer and include
 
 ```html
 <script src="//path/to/video.min.js"></script>
-<script src="//path/to/videojs-qualityselector.min.js"></script>
+<script src="//path/to/videojs-dropdown.min.js"></script>
 <script>
   var player = videojs('my-video');
 
-  player.qualityselector({
+  player.dropdown({
         sources: [
           { format: 'highres', src: 'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4', type: 'video/mp4'},
           { format: 'hd1080', src: 'http://www.sample-videos.com/video/mp4/720/big_buck_bunny_720p_1mb.mp4', type: 'video/mp4'},

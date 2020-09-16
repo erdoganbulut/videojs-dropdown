@@ -1,23 +1,23 @@
-// Sass for videojs-qualityselector
+// Sass for videojs-dropdown
 
 .video-js {
 
   // This class is added to the video.js element by the plugin by default.
-  &.vjs-qualityselector {
+  &.vjs-dropdown {
     display: block;
   }
 
-  .vjs-quality-container {
+  .vjs-dropdown-container {
   	padding: 8px;
     position: relative;
 
-  	.vjs-brand-quality-link {
+  	.vjs-brand-dropdown-link {
   		color: #fff;
   		text-decoration: none;
       cursor: pointer;
   	}
 
-  	.vjs-quality-dropdown {
+  	.vjs-dropdown-dropdown {
 	    position: absolute;
 	    bottom: 30px;
 	    background: rgba(0, 0, 0, 0.48);
@@ -43,7 +43,7 @@
       transition: transform 0.26s ease;
   	}
 
-    .vjs-quality-dropdown.show {
+    .vjs-dropdown-dropdown.show {
       opacity: 1;
 
       -webkit-transform: scaleY(1);
@@ -52,17 +52,17 @@
       transform: scaleY(1);
     }
 
-    .vjs-quality-dropdown ul  {
+    .vjs-dropdown-dropdown ul  {
       margin: 0;
       padding: 0;
     }
 
-    .vjs-quality-dropdown ul li {
+    .vjs-dropdown-dropdown ul li {
       list-style: none;
       margin: 0;
     }
 
-    .vjs-quality-dropdown ul li a {
+    .vjs-dropdown-dropdown ul li a {
       color: #fff;
       text-decoration: none;
       padding: 5px 10px;
@@ -70,8 +70,8 @@
       width: 100%;
     }
 
-    .vjs-quality-dropdown ul li.current a,
-    .vjs-quality-dropdown ul li a:hover {
+    .vjs-dropdown-dropdown ul li.current a,
+    .vjs-dropdown-dropdown ul li a:hover {
       background: #000;
       color: rgb(255, 0, 0);
     }

@@ -31,7 +31,7 @@ module.exports = function(config) {
     frameworks: frameworks,
 
     files: [
-      'dist/videojs-qualityselector.css',
+      'dist/videojs-dropdown.css',
       'node_modules/sinon/pkg/sinon.js',
       'node_modules/sinon/pkg/sinon-ie.js',
       'node_modules/video.js/dist/video.js',

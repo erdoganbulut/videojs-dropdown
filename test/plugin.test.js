@@ -15,7 +15,7 @@ QUnit.test('the environment is sane', function(assert) {
   assert.strictEqual(typeof plugin, 'function', 'plugin is a function');
 });
 
-QUnit.module('videojs-qualityselector', {
+QUnit.module('videojs-dropdown', {
 
   beforeEach() {
 
@@ -41,18 +41,18 @@ QUnit.test('registers itself with video.js', function(assert) {
   assert.expect(2);
 
   assert.strictEqual(
-    Player.prototype.qualityselector,
+    Player.prototype.dropdown,
     plugin,
-    'videojs-qualityselector plugin was registered'
+    'videojs-dropdown plugin was registered'
   );
 
-  this.player.qualityselector();
+  this.player.dropdown();
 
   // Tick the clock forward enough to trigger the player to be "ready".
   this.clock.tick(1);
 
   assert.ok(
-    this.player.hasClass('vjs-qualityselector'),
+    this.player.hasClass('vjs-dropdown'),
     'the plugin adds a class to the player'
   );
 });

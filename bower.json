@@ -1,10 +1,10 @@
 {
-  "name": "videojs-qualityselector",
+  "name": "videojs-dropdown",
   "author": "Emmanuel Alves &lt;manel.pb@gmail.com&gt;",
   "license": "MIT",
   "main": [
-    "dist/videojs-qualityselector.css",
-    "dist/videojs-qualityselector.min.js"
+    "dist/videojs-dropdown.css",
+    "dist/videojs-dropdown.min.js"
   ],
   "keywords": [
     "videojs",
