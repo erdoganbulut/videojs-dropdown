@@ -7,7 +7,7 @@ Simple plugin that displays a dropdown with a list of possible videos based on i
 ## Installation
 
 ```sh
-npm install --save videojs-dropdown
+yarn add https://github.com/erdoganbulut/videojs-dropdown.git
 ```
 
 ## Usage
